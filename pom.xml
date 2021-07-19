@@ -12,6 +12,7 @@
     <modules>
         <module>study-cloud-web</module>
         <module>study-cloud-web-config</module>
+        <module>cloud-comomon</module>
     </modules>
 
 
