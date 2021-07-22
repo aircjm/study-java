@@ -12,7 +12,8 @@
     <modules>
         <module>study-cloud-web</module>
         <module>study-cloud-web-config</module>
-        <module>cloud-comomon</module>
+        <module>study-hibernate-validate</module>
+        <module>cloud-common</module>
     </modules>
 
 

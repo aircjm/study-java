@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.constraints.NotBlank;
+import javax.validation.Valid;
 
 /**
  * @author aircjm
@@ -22,7 +22,7 @@ public class HibernateController {
 
 
     @GetMapping("/methodParamCheck")
-    public String methodParamCheck(@NotBlank String code) {
+    public String methodParamCheck(@Valid String code) {
         return code;
     }
 
