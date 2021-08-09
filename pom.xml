@@ -10,6 +10,7 @@
     <description>study-cloud 父工程,统一管理jar包版本</description>
 
     <modules>
+        <module>study-redis</module>
         <module>study-cloud-web</module>
         <module>study-cloud-web-config</module>
         <module>study-hibernate-validate</module>
