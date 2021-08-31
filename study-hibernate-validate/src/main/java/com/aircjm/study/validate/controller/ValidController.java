@@ -1,10 +1,8 @@
 package com.aircjm.study.validate.controller;
 
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import com.aircjm.study.validate.vo.SaveUserRequest;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -14,7 +12,7 @@ import javax.validation.constraints.NotNull;
  */
 @RestController
 @RequestMapping(value = "/validate")
-public class HibernateController {
+public class ValidController {
 
 
     @GetMapping("/test")
@@ -32,6 +30,12 @@ public class HibernateController {
     @Valid
     @GetMapping("/testParamValid")
     public String testParamValid(@RequestParam @NotNull Long code) {
+        return "success";
+    }
+
+
+    @PostMapping("/saveUser")
+    public String saveUser(@Valid @RequestBody SaveUserRequest request) {
         return "success";
     }
 

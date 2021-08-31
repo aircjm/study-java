@@ -46,4 +46,9 @@ public class Response<T> {
         this.msg = msg;
         this.data = data;
     }
+
+    public static Response<String> fail(Integer code, String msg) {
+        return new Response<>(code, msg, null);
+    }
+
 }
