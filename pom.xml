@@ -12,7 +12,6 @@
     <modules>
         <module>study-validate</module>
         <module>study-postgis</module>
-        <module>study-redis</module>
         <module>study-cloud-web</module>
         <module>study-cloud-web-config</module>
         <module>cloud-common</module>
