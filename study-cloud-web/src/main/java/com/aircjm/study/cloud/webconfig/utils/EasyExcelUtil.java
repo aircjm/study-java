@@ -30,7 +30,7 @@ public class EasyExcelUtil {
      * @param clazz 对象class
      * @param <T>   类型
      */
-    public static <T> List<T> importExcel(MultipartFile file, Class<T> clazz) {
+    public static <T> List<T> importExcel(MultipartFile file, Class<?> clazz) {
         if (Objects.isNull(clazz)) {
             throw new BaseException("对象为空");
         }
