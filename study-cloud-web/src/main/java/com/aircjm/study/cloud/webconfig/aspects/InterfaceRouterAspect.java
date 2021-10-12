@@ -25,7 +25,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.util.Comparator;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -45,8 +44,7 @@ public class InterfaceRouterAspect {
     @Resource
     private HttpServletRequest httpServletRequest;
 
-    public static final String  PATH = "/limon";
-
+    public static final String PATH = "/limon";
 
 
     @Pointcut("@annotation(interfaceRouterAspect)")
@@ -93,35 +91,35 @@ public class InterfaceRouterAspect {
         }
         log.info("方法名为:{}", method.getName());
 
-        /*
-         * 获取开关
-         */
-        int switchOpen;
-        List<RouteUrlVo> sortList = Lists.newArrayList();
-        if (StringUtils.isNotBlank(interfaceRouter.switchUrl())) {
-            Map.Entry<String, Integer> et = routeUrlMap.entrySet().stream().filter(entry -> StringUtils.equalsIgnoreCase(interfaceRouter.switchUrl(), entry.getKey())).findAny().orElse(null);
-            switchOpen = Objects.isNull(et) ? 0 : et.getValue();
-        } else {
-            routeUrlMap.forEach((url, value) -> {
-                url = StringUtils.replace(url, "**", "");
-                if (StringUtils.startsWith(requestUri, url)) {
-                    RouteUrlVo vo = new RouteUrlVo();
-                    vo.setOrder(url.length());
-                    vo.setSwitchOpen(value);
-                    sortList.add(vo);
-                }
-            });
-            sortList.sort(Comparator.comparing(RouteUrlVo::getOrder).reversed());
-            RouteUrlVo routeUrlVo = null;
-            if (CollectionUtils.isNotEmpty(sortList)) {
-                routeUrlVo = sortList.get(0);
-            }
-            switchOpen = Objects.isNull(routeUrlVo) ? 0 : routeUrlVo.getSwitchOpen();
-        }
-        log.info("开关为:{}", switchOpen);
-        if (1 != switchOpen) {
-            return point.proceed();
-        }
+//        /*
+//         * 获取开关
+//         */
+//        int switchOpen;
+//        List<RouteUrlVo> sortList = Lists.newArrayList();
+//        if (StringUtils.isNotBlank(interfaceRouter.switchUrl())) {
+//            Map.Entry<String, Integer> et = routeUrlMap.entrySet().stream().filter(entry -> StringUtils.equalsIgnoreCase(interfaceRouter.switchUrl(), entry.getKey())).findAny().orElse(null);
+//            switchOpen = Objects.isNull(et) ? 0 : et.getValue();
+//        } else {
+//            routeUrlMap.forEach((url, value) -> {
+//                url = StringUtils.replace(url, "**", "");
+//                if (StringUtils.startsWith(requestUri, url)) {
+//                    RouteUrlVo vo = new RouteUrlVo();
+//                    vo.setOrder(url.length());
+//                    vo.setSwitchOpen(value);
+//                    sortList.add(vo);
+//                }
+//            });
+//            sortList.sort(Comparator.comparing(RouteUrlVo::getOrder).reversed());
+//            RouteUrlVo routeUrlVo = null;
+//            if (CollectionUtils.isNotEmpty(sortList)) {
+//                routeUrlVo = sortList.get(0);
+//            }
+//            switchOpen = Objects.isNull(routeUrlVo) ? 0 : routeUrlVo.getSwitchOpen();
+//        }
+//        log.info("开关为:{}", switchOpen);
+//        if (1 != switchOpen) {
+//            return point.proceed();
+//        }
         return method.invoke(t, args);
     }
 

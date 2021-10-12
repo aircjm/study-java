@@ -1,0 +1,16 @@
+server:
+  port: 8071
+
+spring:
+  application:
+    name: study-postgis
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: 123456
+    driver-class-name: org.postgresql.Driver
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+  mapper-locations: classpath:mapper/*.xml
