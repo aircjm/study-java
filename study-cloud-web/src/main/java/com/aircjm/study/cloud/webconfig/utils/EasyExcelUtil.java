@@ -91,7 +91,7 @@ public class EasyExcelUtil {
         String filePath = Strings.EMPTY;
         try {
             filePath = System.getProperty("user.dir") + "/excel/data/" + fileName + ".xls";
-            FileUtil.newFile(filePath);
+            FileUtil.touch(filePath);
             // 创建文件路径
             // 导入数据,生成Excel
             EasyExcel.write(filePath, clazz).sheet().doWrite(data);
