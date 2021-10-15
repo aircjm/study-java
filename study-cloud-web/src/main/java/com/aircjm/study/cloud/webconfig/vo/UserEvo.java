@@ -4,7 +4,7 @@ import com.alibaba.excel.annotation.ExcelProperty;
 import lombok.Data;
 
 @Data
-public class User {
+public class UserEvo {
 
     @ExcelProperty("姓名")
     private String name;
