@@ -1,5 +1,7 @@
 package com.aircjm.cloud.common;
 
+import java.util.Objects;
+
 /**
  * 返回实体类
  * @author aircjm
@@ -11,6 +13,18 @@ public class Response<T> {
     private String msg;
 
     private T data;
+
+    private static final Integer SUCCESS = 0;
+
+    public static Response success(Object object) {
+        return new Response<>(SUCCESS, "success", object);
+    }
+
+
+
+    public static Response success() {
+        return new Response<>(SUCCESS, "success", null);
+    }
 
 
     public Integer getCode() {
