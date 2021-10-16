@@ -26,7 +26,7 @@ public class LocalDateTimeConfig {
     /**
      * LocalDateTime的序列化 全局配置时间返回格式
      *
-     * @return
+     * @return 序列化处理器
      */
     @Bean
     public Jackson2ObjectMapperBuilderCustomizer jackson2ObjectMapperBuilderCustomizer() {

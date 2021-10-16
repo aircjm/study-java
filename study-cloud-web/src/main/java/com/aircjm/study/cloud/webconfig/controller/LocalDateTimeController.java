@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * @author aircjm
@@ -36,6 +37,33 @@ public class LocalDateTimeController {
     @GetMapping("/paramTime")
     public Response<UserResponse> timeRequestParam(@RequestParam(value = "time") LocalDateTime time) {
         log.info("user request is {}", time.toString());
+        return Response.success();
+    }
+
+
+    @GetMapping("/localDateTimeVariable/{time}")
+    public Response<UserResponse> timeVariable(@PathVariable(value = "time") LocalDateTime time) {
+        log.info("user request is {}", time.toString());
+        return Response.success();
+    }
+
+
+    @GetMapping("/dateParam")
+    public Response<UserResponse> dateVariable(@RequestParam(value = "date") Date date) {
+        log.info("user request is {}", date.toString());
+        return Response.success();
+    }
+
+
+    /**
+     * 解析失败
+     *
+     * @param date date
+     * @return
+     */
+    @GetMapping("/datePath/{date}")
+    public Response<UserResponse> datePath(@PathVariable(value = "date") Date date) {
+        log.info("user request is {}", date.toString());
         return Response.success();
     }
 
