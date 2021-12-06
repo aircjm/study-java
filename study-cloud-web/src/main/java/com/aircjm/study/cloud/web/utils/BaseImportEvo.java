@@ -1,4 +1,4 @@
-package com.aircjm.study.cloud.webconfig.utils;
+package com.aircjm.study.cloud.web.utils;
 
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.json.JSONUtil;

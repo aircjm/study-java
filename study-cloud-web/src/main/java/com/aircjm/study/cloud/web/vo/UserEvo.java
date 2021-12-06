@@ -1,12 +1,10 @@
-package com.aircjm.study.cloud.webconfig.vo;
+package com.aircjm.study.cloud.web.vo;
 
 import com.alibaba.excel.annotation.ExcelProperty;
 import lombok.Data;
 
-import java.net.URL;
-
 @Data
-public class UserImageEvo {
+public class UserEvo {
 
     @ExcelProperty("姓名")
     private String name;
@@ -14,10 +12,6 @@ public class UserImageEvo {
 
     @ExcelProperty("年龄")
     private Integer age;
-
-
-    @ExcelProperty("头像")
-    private URL imageUrl;
 
 
     @ExcelProperty("结果")

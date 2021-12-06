@@ -1,11 +1,11 @@
-package com.aircjm.study.cloud.webconfig.controller;
+package com.aircjm.study.cloud.web.controller;
 
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.json.JSONUtil;
 import com.aircjm.cloud.common.Response;
-import com.aircjm.study.cloud.webconfig.vo.UserRequest;
-import com.aircjm.study.cloud.webconfig.vo.UserResponse;
+import com.aircjm.study.cloud.web.vo.UserRequest;
+import com.aircjm.study.cloud.web.vo.UserResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 

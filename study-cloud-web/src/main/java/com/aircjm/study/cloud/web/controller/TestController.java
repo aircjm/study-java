@@ -1,4 +1,4 @@
-package com.aircjm.study.cloud.webconfig.controller;
+package com.aircjm.study.cloud.web.controller;
 
 
 import org.springframework.web.bind.annotation.GetMapping;

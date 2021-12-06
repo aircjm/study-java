@@ -1,4 +1,4 @@
-package com.aircjm.study.cloud.webconfig.factory;
+package com.aircjm.study.cloud.web.factory;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

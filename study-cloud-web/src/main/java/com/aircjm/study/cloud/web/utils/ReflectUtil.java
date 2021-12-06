@@ -1,4 +1,4 @@
-package com.aircjm.study.cloud.webconfig.utils;
+package com.aircjm.study.cloud.web.utils;
 
 import com.aircjm.cloud.common.exceptions.Assert;
 import com.google.common.collect.Lists;

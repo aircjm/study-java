@@ -1,6 +1,6 @@
-package com.aircjm.study.cloud.webconfig.utils;
+package com.aircjm.study.cloud.web.utils;
 
-import com.aircjm.study.cloud.webconfig.vo.UserEvo;
+import com.aircjm.study.cloud.web.vo.UserEvo;
 import com.google.common.collect.Lists;
 import org.junit.jupiter.api.Test;
 

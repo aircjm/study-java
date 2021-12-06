@@ -1,6 +1,5 @@
-package com.aircjm.study.cloud.webconfig.vo;
+package com.aircjm.study.cloud.web.vo;
 
-import com.alibaba.excel.annotation.ExcelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,7 +9,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserResponse {
+public class UserRequest {
 
     private String name;
 

@@ -1,4 +1,4 @@
-package com.aircjm.study.cloud.webconfig.config;
+package com.aircjm.study.cloud.web.config;
 
 import cn.hutool.core.date.LocalDateTimeUtil;
 import com.fasterxml.jackson.core.JsonGenerator;

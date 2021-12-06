@@ -1,4 +1,4 @@
-package com.aircjm.study.cloud.webconfig;
+package com.aircjm.study.cloud.web;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

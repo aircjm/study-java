@@ -1,4 +1,4 @@
-package com.aircjm.study.cloud.webconfig.annotation;
+package com.aircjm.study.cloud.web.annotation;
 
 import java.lang.annotation.*;
 
