@@ -73,26 +73,30 @@ class TreeUtilTest {
 
         HashMap<Long, List<NodeVo>> nodeMap = Maps.newHashMap();
         for (NodeTreeVo nodeTreeVo : treeVoList) {
-            addChildList(nodeTreeVo, nodeMap, Lists.newArrayList(BeanUtil.toBean(nodeTreeVo, NodeVo.class)));
+            addChildList(nodeTreeVo, nodeMap);
         }
 
         log.info("\n\n\n平铺后到第一层节点map为：{}", JSONUtil.toJsonStr(nodeMap));
 
+        nodeMap.forEach((aLong, list) -> {
+            log.info("id 为：{}, 总数为: {}", aLong, list.size());
+        });
+
     }
 
-    private void addChildList(NodeTreeVo child, HashMap<Long, List<NodeVo>> nodeMap, List<NodeVo> list) {
+    private List<NodeVo> addChildList(NodeTreeVo child, HashMap<Long, List<NodeVo>> nodeMap) {
         NodeVo nodeVo = BeanUtil.toBean(child, NodeVo.class);
+        List<NodeVo> list = Lists.newArrayList(nodeVo);
         // 如果是叶子节点 直接设置
         List<NodeTreeVo> childList = child.getChildList();
-        if (CollectionUtil.isEmpty(childList)) {
-            nodeMap.put(nodeVo.getId(),list);
-        } else {
-            childList.forEach(nodeTreeVo -> {
-                addChildList(nodeTreeVo, nodeMap, list);
-            });
-
+        if (CollectionUtil.isNotEmpty(childList)) {
+            list = childList.stream().flatMap(nodeTreeVo -> {
+                return addChildList(nodeTreeVo, nodeMap).stream();
+            }).collect(Collectors.toList());
         }
+
         nodeMap.put(nodeVo.getId(), list);
+        return list;
     }
 
     private List<NodeTreeVo> addTreeNode(NodeTreeVo nodeTreeVo, List<NodeVo> all) {
