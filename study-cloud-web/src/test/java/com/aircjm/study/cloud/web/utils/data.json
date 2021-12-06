@@ -1,0 +1,220 @@
+[
+  {
+    "childList": [
+      {
+        "childList": [
+          {
+            "childList": [],
+            "parentId": 35,
+            "name": "序号为：99",
+            "id": 99
+          }
+        ],
+        "parentId": 10,
+        "name": "序号为：35",
+        "id": 35
+      },
+      {
+        "childList": [],
+        "parentId": 10,
+        "name": "序号为：53",
+        "id": 53
+      }
+    ],
+    "parentId": 0,
+    "name": "序号为：10",
+    "id": 10
+  },
+  {
+    "childList": [
+      {
+        "childList": [],
+        "parentId": 13,
+        "name": "序号为：62",
+        "id": 62
+      }
+    ],
+    "parentId": 0,
+    "name": "序号为：13",
+    "id": 13
+  },
+  {
+    "childList": [
+      {
+        "childList": [
+          {
+            "childList": [
+              {
+                "childList": [],
+                "parentId": 39,
+                "name": "序号为：36",
+                "id": 36
+              }
+            ],
+            "parentId": 7,
+            "name": "序号为：39",
+            "id": 39
+          },
+          {
+            "childList": [
+              {
+                "childList": [],
+                "parentId": 41,
+                "name": "序号为：81",
+                "id": 81
+              }
+            ],
+            "parentId": 7,
+            "name": "序号为：41",
+            "id": 41
+          },
+          {
+            "childList": [],
+            "parentId": 7,
+            "name": "序号为：65",
+            "id": 65
+          },
+          {
+            "childList": [],
+            "parentId": 7,
+            "name": "序号为：82",
+            "id": 82
+          },
+          {
+            "childList": [],
+            "parentId": 7,
+            "name": "序号为：86",
+            "id": 86
+          }
+        ],
+        "parentId": 20,
+        "name": "序号为：7",
+        "id": 7
+      }
+    ],
+    "parentId": 0,
+    "name": "序号为：20",
+    "id": 20
+  },
+  {
+    "childList": [],
+    "parentId": 0,
+    "name": "序号为：30",
+    "id": 30
+  },
+  {
+    "childList": [
+      {
+        "childList": [
+          {
+            "childList": [
+              {
+                "childList": [
+                  {
+                    "childList": [],
+                    "parentId": 27,
+                    "name": "序号为：78",
+                    "id": 78
+                  }
+                ],
+                "parentId": 5,
+                "name": "序号为：27",
+                "id": 27
+              },
+              {
+                "childList": [],
+                "parentId": 5,
+                "name": "序号为：66",
+                "id": 66
+              }
+            ],
+            "parentId": 18,
+            "name": "序号为：5",
+            "id": 5
+          },
+          {
+            "childList": [
+              {
+                "childList": [
+                  {
+                    "childList": [],
+                    "parentId": 8,
+                    "name": "序号为：67",
+                    "id": 67
+                  },
+                  {
+                    "childList": [],
+                    "parentId": 8,
+                    "name": "序号为：95",
+                    "id": 95
+                  }
+                ],
+                "parentId": 14,
+                "name": "序号为：8",
+                "id": 8
+              },
+              {
+                "childList": [
+                  {
+                    "childList": [],
+                    "parentId": 46,
+                    "name": "序号为：77",
+                    "id": 77
+                  }
+                ],
+                "parentId": 14,
+                "name": "序号为：46",
+                "id": 46
+              }
+            ],
+            "parentId": 18,
+            "name": "序号为：14",
+            "id": 14
+          },
+          {
+            "childList": [],
+            "parentId": 18,
+            "name": "序号为：85",
+            "id": 85
+          }
+        ],
+        "parentId": 40,
+        "name": "序号为：18",
+        "id": 18
+      }
+    ],
+    "parentId": 0,
+    "name": "序号为：40",
+    "id": 40
+  },
+  {
+    "childList": [],
+    "parentId": 0,
+    "name": "序号为：50",
+    "id": 50
+  },
+  {
+    "childList": [],
+    "parentId": 0,
+    "name": "序号为：60",
+    "id": 60
+  },
+  {
+    "childList": [],
+    "parentId": 0,
+    "name": "序号为：70",
+    "id": 70
+  },
+  {
+    "childList": [],
+    "parentId": 0,
+    "name": "序号为：80",
+    "id": 80
+  },
+  {
+    "childList": [],
+    "parentId": 0,
+    "name": "序号为：90",
+    "id": 90
+  }
+]
