@@ -1,14 +1,18 @@
 package com.aircjm.study.cloud.web.utils;
 
 import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.json.JSONUtil;
 import com.aircjm.study.cloud.web.vo.NodeTreeVo;
 import com.aircjm.study.cloud.web.vo.NodeVo;
 import com.aircjm.study.cloud.web.vo.UserEvo;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
@@ -50,7 +54,45 @@ class TreeUtilTest {
 
         log.info("树结构为：{}", JSONUtil.toJsonStr(treeVoList));
 
+    }
 
+
+
+    @Test
+    void treeToMapTest() {
+        List<NodeVo> nodeVoList = getNodeList();
+        log.info("开始转化对应的树结构---------------->\n\n\n");
+        List<NodeTreeVo> treeVoList = nodeVoList.stream().filter(item -> item.getParentId() == 0).map(nodeVo -> {
+            NodeTreeVo nodeTreeVo = BeanUtil.toBean(nodeVo, NodeTreeVo.class);
+            nodeTreeVo.setChildList(addTreeNode(nodeTreeVo, nodeVoList));
+            return nodeTreeVo;
+        }).collect(Collectors.toList());
+
+
+        log.info("\n\n\n需要将节点全部平铺到第一层map上");
+
+        HashMap<Long, List<NodeVo>> nodeMap = Maps.newHashMap();
+        for (NodeTreeVo nodeTreeVo : treeVoList) {
+            addChildList(nodeTreeVo, nodeMap, Lists.newArrayList(BeanUtil.toBean(nodeTreeVo, NodeVo.class)));
+        }
+
+        log.info("\n\n\n平铺后到第一层节点map为：{}", JSONUtil.toJsonStr(nodeMap));
+
+    }
+
+    private void addChildList(NodeTreeVo child, HashMap<Long, List<NodeVo>> nodeMap, List<NodeVo> list) {
+        NodeVo nodeVo = BeanUtil.toBean(child, NodeVo.class);
+        // 如果是叶子节点 直接设置
+        List<NodeTreeVo> childList = child.getChildList();
+        if (CollectionUtil.isEmpty(childList)) {
+            nodeMap.put(nodeVo.getId(),list);
+        } else {
+            childList.forEach(nodeTreeVo -> {
+                addChildList(nodeTreeVo, nodeMap, list);
+            });
+
+        }
+        nodeMap.put(nodeVo.getId(), list);
     }
 
     private List<NodeTreeVo> addTreeNode(NodeTreeVo nodeTreeVo, List<NodeVo> all) {
