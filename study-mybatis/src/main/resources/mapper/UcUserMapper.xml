@@ -4,4 +4,7 @@
     <select id="selectOne" resultType="com.aircjm.study.mybatis.domain.UcUser">
         select  * from uc_user limit 1
     </select>
+    <update id="updateOne">
+        update uc_user set username = #{username} where id = #{id}
+    </update>
 </mapper>

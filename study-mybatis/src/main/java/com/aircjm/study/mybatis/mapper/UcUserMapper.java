@@ -6,4 +6,7 @@ public interface UcUserMapper {
 
 
     UcUser selectOne(Long id);
+
+
+    void updateOne(UcUser ucUser);
 }
