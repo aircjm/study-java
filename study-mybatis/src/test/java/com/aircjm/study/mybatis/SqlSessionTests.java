@@ -8,7 +8,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,6 +21,8 @@ public class SqlSessionTests {
      */
     @Test
     public  void testSelect() throws IOException {
+        // java8 以上适用
+        System.getProperties().put("jdk.proxy.ProxyGenerator.saveGeneratedFiles", "true");
         InputStream resourceAsStream = Resources.getResourceAsStream("mybatis-config.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
 
@@ -54,6 +55,12 @@ public class SqlSessionTests {
         ucUser.setId(1086L);
         mapper.updateOne(ucUser);
         sqlSession.close();
+    }
+
+
+    public static void main(String[] args) throws IOException {
+        System.getProperties().put("jdk.proxy.ProxyGenerator.saveGeneratedFiles", "true");
+//        testSelect();
     }
 
 }
