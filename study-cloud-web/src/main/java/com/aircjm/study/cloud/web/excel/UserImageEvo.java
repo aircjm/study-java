@@ -1,4 +1,4 @@
-package com.aircjm.study.cloud.web.vo;
+package com.aircjm.study.cloud.web.excel;
 
 import com.alibaba.excel.annotation.ExcelProperty;
 import lombok.Data;

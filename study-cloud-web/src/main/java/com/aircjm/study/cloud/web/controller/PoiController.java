@@ -4,7 +4,7 @@ package com.aircjm.study.cloud.web.controller;
 import cn.hutool.json.JSONUtil;
 import com.aircjm.study.cloud.web.utils.EasyExcelUtil;
 import com.aircjm.study.cloud.web.vo.UserEvo;
-import com.aircjm.study.cloud.web.vo.UserImageEvo;
+import com.aircjm.study.cloud.web.excel.UserImageEvo;
 import com.alibaba.excel.EasyExcel;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
