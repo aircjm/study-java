@@ -2,7 +2,7 @@ package com.aircjm.study.cloud.web.utils;
 
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.io.FileUtil;
-import com.aircjm.cloud.common.exceptions.BaseException;
+import com.aircjm.cloud.common.exceptions.BizException;
 import com.alibaba.excel.EasyExcel;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.util.Strings;
@@ -31,7 +31,7 @@ public class EasyExcelUtil {
      */
     public static <T> List<T> importExcel(MultipartFile file, Class<T> clazz) {
         if (Objects.isNull(clazz)) {
-            throw new BaseException("对象为空");
+            throw new BizException("对象为空");
         }
         List<T> data;
         InputStream inputStream = null;
@@ -39,7 +39,7 @@ public class EasyExcelUtil {
             inputStream = file.getInputStream();
             data = importExcel(inputStream, clazz);
         } catch (Exception e) {
-            throw new BaseException("解析excel异常", e);
+            throw new BizException("解析excel异常", e);
         } finally {
             if (Objects.nonNull(inputStream)) {
                 try {
@@ -63,7 +63,7 @@ public class EasyExcelUtil {
     @SuppressWarnings("unchecked")
     public static <T> List<T> importExcel(InputStream inputStream, Class<?> clazz) {
         if (Objects.isNull(inputStream)) {
-            throw new BaseException("inputStream为空");
+            throw new BizException("inputStream为空");
         }
         List<T> data;
         try {
@@ -71,10 +71,10 @@ public class EasyExcelUtil {
             EasyExcel.read(inputStream, clazz, baseImportEvo).sheet().doRead();
             data = baseImportEvo.getData();
         } catch (Exception e) {
-            throw new BaseException("解析Excel失败", e);
+            throw new BizException("解析Excel失败", e);
         }
         if (CollectionUtil.isEmpty(data)) {
-            throw new BaseException("解析结果集为空");
+            throw new BizException("解析结果集为空");
         }
         return data;
     }

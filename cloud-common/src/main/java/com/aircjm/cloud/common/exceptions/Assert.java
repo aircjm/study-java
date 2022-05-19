@@ -6,16 +6,16 @@ package com.aircjm.cloud.common.exceptions;
  */
 public class Assert {
 
-    public static void requireNonNull(Object obj, String message) throws BaseException {
+    public static void requireNonNull(Object obj, String message) throws BizException {
         if (null == obj) {
-            throw new BaseException(message);
+            throw new BizException(message);
         }
     }
 
 
-    public static void requireNonNull(Object obj, String message, String code) throws BaseException {
+    public static void requireNonNull(Object obj, String message, String code) throws BizException {
         if (null == obj) {
-            throw new BaseException(message, code);
+            throw new BizException(message, code);
         }
     }
 

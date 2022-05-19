@@ -2,11 +2,11 @@ package com.aircjm.cloud.common.exceptions;
 
 
 /**
- * 基础异常
+ * 自定义异常
  *
  * @author aircjm
  */
-public class BaseException extends RuntimeException {
+public class BizException extends RuntimeException {
 
     /**
      * 所属模块
@@ -29,30 +29,30 @@ public class BaseException extends RuntimeException {
     private String defaultMessage;
 
 
-    public BaseException(String message, Throwable cause) {
+    public BizException(String message, Throwable cause) {
         super(message, cause);
     }
 
-    public BaseException(String module, String code, Object[] args, String defaultMessage) {
+    public BizException(String module, String code, Object[] args, String defaultMessage) {
         this.module = module;
         this.code = code;
         this.args = args;
         this.defaultMessage = defaultMessage;
     }
 
-    public BaseException(String module, String code, Object[] args) {
+    public BizException(String module, String code, Object[] args) {
         this(module, code, args, null);
     }
 
-    public BaseException(String module, String defaultMessage) {
+    public BizException(String module, String defaultMessage) {
         this(module, null, null, defaultMessage);
     }
 
-    public BaseException(String code, Object[] args) {
+    public BizException(String code, Object[] args) {
         this(null, code, args, null);
     }
 
-    public BaseException(String defaultMessage) {
+    public BizException(String defaultMessage) {
         this(null, null, null, defaultMessage);
     }
 
