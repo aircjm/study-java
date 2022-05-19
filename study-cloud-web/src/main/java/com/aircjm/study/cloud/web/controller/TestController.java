@@ -27,7 +27,7 @@ public class TestController {
 
     @GetMapping("/testService")
     public String testService() {
-        testService.test();
+        testService.testCronSchedule();
         return "success";
     }
 
