@@ -1,6 +1,7 @@
 package com.aircjm.study.cloud.web.vo;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
@@ -8,6 +9,7 @@ import java.util.List;
  * @author aircjm
  */
 @Data
+@EqualsAndHashCode(callSuper=false)
 public class NodeTreeVo extends NodeVo {
 
 
