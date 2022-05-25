@@ -16,6 +16,7 @@
         <module>study-pattern</module>
         <module>study-mybatis</module>
         <module>cloud-common</module>
+        <module>cloud-common-parent</module>
     </modules>
 
 
