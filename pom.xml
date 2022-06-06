@@ -10,13 +10,13 @@
     <description>study-cloud 父工程,统一管理jar包版本</description>
 
     <modules>
+        <module>cloud-common-parent</module>
         <module>study-validate</module>
         <module>study-postgis</module>
         <module>study-cloud-web</module>
         <module>study-pattern</module>
         <module>study-mybatis</module>
         <module>cloud-common</module>
-        <module>cloud-common-parent</module>
     </modules>
 
 
@@ -25,72 +25,116 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+
+        <!-- Spring Boot 依赖 -->
+        <spring-boot.version>2.7.0</spring-boot.version>
+        <!-- Spring Cloud 依赖 -->
+        <spring-cloud.version>2021.0.2</spring-cloud.version>
+        <!-- Alibaba Cloud 依赖 -->
+        <spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
+
+
+        <!-- MyBatis -->
+        <mybatis-spring-boot-starter.version>2.2.2</mybatis-spring-boot-starter.version>
+        <!-- MyBatis Plus -->
+        <mybatis-plus-boot-starter.version>3.5.1</mybatis-plus-boot-starter.version>
+        <mybatis-plus-generator.version>3.5.2</mybatis-plus-generator.version>
+        <mybatis-plus-extension.version>3.5.1</mybatis-plus-extension.version>
+        <!-- 多数据源 -->
+        <dynamic-datasource-spring-boot-starter.version>3.5.1</dynamic-datasource-spring-boot-starter.version>
+        <!-- SQL 性能分析 -->
+        <p6spy.version>3.9.1</p6spy.version>
+
+        <!-- 打包时跳过单元测试 -->
+        <skipTests>true</skipTests>
+
         <junit.version>4.12</junit.version>
         <log4j.version>1.2.17</log4j.version>
         <lombok.version>1.16.18</lombok.version>
         <mysql.version>8.0.18</mysql.version>
-        <spring.boot.version>2.5.9</spring.boot.version>
-        <spring.cloud.version>Hoxton.SR8</spring.cloud.version>
-        <spring.cloud.alibaba.version>2.1.0.RELEASE</spring.cloud.alibaba.version>
-        <mybatis.spring.boot.version>1.3.0</mybatis.spring.boot.version>
-        <mybatis.plus.boot.starter.version>3.4.3.4</mybatis.plus.boot.starter.version>
-        <mybatis-spring-boot-starter.version>2.1.1</mybatis-spring-boot-starter.version>
-        <hutool-all.version>5.1.0</hutool-all.version>
+        <hutool-all.version>5.8.1</hutool-all.version>
+        <guava.version>31.1-jre</guava.version>
+
     </properties>
     <!--子模块继承后,提供作用:锁定版本+子module不用groupId和version-->
     <dependencyManagement>
         <dependencies>
-            <!--springboot 2.2.2-->
+            <!-- Spring Boot 依赖控制 -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring.boot.version}</version>
+                <version>${spring-boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!--Spring cloud Hoxton.SR1-->
+            <!-- Spring Cloud 依赖控制 -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring.cloud.version}</version>
+                <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!--Spring cloud alibaba 2.1.0.RELEASE-->
+            <!-- Alibaba Cloud 依赖控制 -->
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-                <version>${spring.cloud.alibaba.version}</version>
+                <version>${spring-cloud-alibaba.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
 
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>1.18.18</version>
-            </dependency>
-            <dependency>
-                <groupId>com.baomidou</groupId>
-                <artifactId>mybatis-plus-boot-starter</artifactId>
-                <version>${mybatis.plus.boot.starter.version}</version>
-            </dependency>
 
-            <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
-                <version>${mysql.version}</version>
-            </dependency>
+            <!-- MyBatis -->
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
                 <artifactId>mybatis-spring-boot-starter</artifactId>
                 <version>${mybatis-spring-boot-starter.version}</version>
             </dependency>
+            <!-- MyBatis Plus -->
             <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>${lombok.version}</version>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus-boot-starter.version}</version>
             </dependency>
+            <!-- MyBatis Plus Generator -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
+                <version>${mybatis-plus-generator.version}</version>
+            </dependency>
+            <!-- 多数据源 -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+                <version>${dynamic-datasource-spring-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-extension</artifactId>
+                <version>${mybatis-plus-extension.version}</version>
+            </dependency>
+            <!-- SQL 性能分析 -->
+            <dependency>
+                <groupId>p6spy</groupId>
+                <artifactId>p6spy</artifactId>
+                <version>${p6spy.version}</version>
+            </dependency>
+
+            <!-- guava -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool-all.version}</version>
+            </dependency>
+
+
         </dependencies>
     </dependencyManagement>
 
