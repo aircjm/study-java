@@ -17,6 +17,7 @@
         <module>study-pattern</module>
         <module>study-mybatis</module>
         <module>cloud-common</module>
+        <module>base-java</module>
     </modules>
 
 
