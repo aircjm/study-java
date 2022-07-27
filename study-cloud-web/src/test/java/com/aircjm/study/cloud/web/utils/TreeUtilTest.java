@@ -5,16 +5,13 @@ import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.json.JSONUtil;
 import com.aircjm.study.cloud.web.vo.NodeTreeVo;
 import com.aircjm.study.cloud.web.vo.NodeVo;
-import com.aircjm.study.cloud.web.vo.UserEvo;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
