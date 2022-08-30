@@ -10,14 +10,12 @@
     <description>study-cloud 父工程,统一管理jar包版本</description>
 
     <modules>
-        <module>cloud-common-parent</module>
         <module>study-validate</module>
         <module>study-postgis</module>
         <module>study-cloud-web</module>
         <module>study-pattern</module>
         <module>study-mybatis</module>
-        <module>cloud-common</module>
-        <module>base-java</module>
+        <module>juc-learn</module>
     </modules>
 
 
