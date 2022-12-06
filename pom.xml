@@ -16,6 +16,7 @@
         <module>study-pattern</module>
         <module>study-mybatis</module>
         <module>juc-learn</module>
+        <module>springboot3</module>
     </modules>
 
 
