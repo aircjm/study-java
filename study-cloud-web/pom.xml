@@ -33,6 +33,17 @@
             <optional>true</optional>
         </dependency>
 
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
+
+
         <!--阿里巴巴的poi框架-->
         <dependency>
             <groupId>com.alibaba</groupId>
