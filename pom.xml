@@ -11,7 +11,7 @@
 
     <modules>
         <module>java-base</module>
-        <module>study-validate</module>
+<!--        <module>study-validate</module>-->
         <module>study-postgis</module>
         <module>study-cloud-web</module>
         <module>study-mybatis</module>
