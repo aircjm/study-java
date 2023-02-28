@@ -3,9 +3,9 @@ package com.aircjm.study.cloud.web.controller;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.json.JSONUtil;
-import com.aircjm.cloud.common.Response;
 import com.aircjm.study.cloud.web.vo.UserRequest;
 import com.aircjm.study.cloud.web.vo.UserResponse;
+import com.rimlook.framework.core.pojo.Response;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +23,8 @@ public class LocalDateTimeController {
 
     @GetMapping("/serial")
     public Response<UserResponse> serial() {
-        return Response.success(new UserResponse("测试", 15, LocalDateTime.now()));
+        UserResponse response = new UserResponse("测试", 15, LocalDateTime.now());
+        return Response.success(response);
     }
 
 
@@ -62,7 +63,7 @@ public class LocalDateTimeController {
      * @return
      */
     @GetMapping("/datePath/{date}")
-    public Response<UserResponse> datePath(@PathVariable(value = "date") Date date) {
+    public Response datePath(@PathVariable(value = "date") Date date) {
         log.info("user request is {}", date.toString());
         return Response.success();
     }

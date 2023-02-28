@@ -1,15 +1,10 @@
 package com.aircjm.study.cloud.web.vo;
 
-import com.alibaba.excel.annotation.ExcelProperty;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class UserResponse {
 
     private String name;
@@ -21,4 +16,9 @@ public class UserResponse {
     private LocalDateTime createTime;
 
 
+    public UserResponse(String name, Integer age, LocalDateTime createTime) {
+        this.name = name;
+        this.age = age;
+        this.createTime = createTime;
+    }
 }

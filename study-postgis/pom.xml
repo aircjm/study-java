@@ -3,9 +3,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>study-cloud</artifactId>
-        <groupId>com.aircjm</groupId>
-        <version>0.0.1-SNAPSHOT</version>
+        <groupId>com.rimlook.framework</groupId>
+        <artifactId>grus-starters-parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath/>
     </parent>
     <artifactId>study-postgis</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -16,6 +17,11 @@
     </properties>
     <dependencies>
 
+
+        <dependency>
+            <groupId>com.rimlook.framework</groupId>
+            <artifactId>grus-starter-core</artifactId>
+        </dependency>
 
 
         <dependency>

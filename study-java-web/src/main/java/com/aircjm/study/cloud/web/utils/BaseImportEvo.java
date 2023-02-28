@@ -2,12 +2,12 @@ package com.aircjm.study.cloud.web.utils;
 
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.json.JSONUtil;
-import com.aircjm.cloud.common.exceptions.BizException;
 import com.alibaba.excel.annotation.ExcelProperty;
 import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.event.AnalysisEventListener;
 import com.alibaba.excel.exception.ExcelDataConvertException;
 import com.google.common.collect.Lists;
+import com.rimlook.framework.core.exception.BusinessException;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
@@ -63,7 +63,7 @@ public class BaseImportEvo<T> extends AnalysisEventListener<T> {
             log.warn("第{}行，第{}列解析异常", excelDataConvertException.getRowIndex(),
                     excelDataConvertException.getColumnIndex());
         }
-        throw new BizException("excel parse error", exception.getCause());
+        throw new BusinessException("excel parse error", exception.getCause());
     }
 
     /**
@@ -118,7 +118,7 @@ public class BaseImportEvo<T> extends AnalysisEventListener<T> {
     @Override
     public void doAfterAllAnalysed(AnalysisContext context) {
         if (CollectionUtil.isEmpty(data)) {
-            throw new BizException("解析结果集为空");
+            throw new BusinessException("解析结果集为空");
         }
         log.info("解析Excel完成,耗时:{}ms", System.currentTimeMillis() - startTime);
     }

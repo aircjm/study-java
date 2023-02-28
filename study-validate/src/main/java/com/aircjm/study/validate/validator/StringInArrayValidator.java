@@ -1,8 +1,8 @@
 package com.aircjm.study.validate.validator;
 
+import cn.hutool.core.collection.CollectionUtil;
+import cn.hutool.core.util.StrUtil;
 import com.google.common.collect.Lists;
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -26,11 +26,11 @@ public class StringInArrayValidator implements ConstraintValidator<StringInArray
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
         // 如果字段不存在值，则跳过校验。判空交给@NotNull等校验
-        if (StringUtils.isBlank(value)) {
+        if (StrUtil.isBlank(value)) {
             return true;
         }
         // 如果注解未写target，则和未加注解等同，直接跳过校验
-        if (CollectionUtils.isEmpty(target)) {
+        if (CollectionUtil.isEmpty(target)) {
             return true;
         }
         return target.contains(value);

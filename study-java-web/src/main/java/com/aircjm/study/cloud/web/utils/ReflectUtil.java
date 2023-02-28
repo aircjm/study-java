@@ -1,10 +1,10 @@
 package com.aircjm.study.cloud.web.utils;
 
-import com.aircjm.cloud.common.exceptions.Assert;
+import cn.hutool.core.util.StrUtil;
+import com.aircjm.study.cloud.web.exceptions.Assert;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.lang3.StringUtils;
 
 import java.beans.PropertyDescriptor;
 import java.lang.annotation.Annotation;
@@ -112,7 +112,7 @@ public class ReflectUtil {
      * @return 字段值
      */
     public static <T> Object getFieldValueByName(T t, String fieldName) {
-        if (t == null || StringUtils.isBlank(fieldName)) {
+        if (t == null || StrUtil.isBlank(fieldName)) {
             return null;
         }
         try {

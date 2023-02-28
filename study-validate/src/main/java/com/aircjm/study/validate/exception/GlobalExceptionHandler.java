@@ -1,8 +1,8 @@
 package com.aircjm.study.validate.exception;
 
-import com.aircjm.cloud.common.Response;
-import com.aircjm.cloud.common.enums.ErrorCodeEnum;
-import org.apache.commons.collections4.CollectionUtils;
+import cn.hutool.core.collection.CollectionUtil;
+import com.rimlook.framework.core.enums.ErrorCodeEnum;
+import com.rimlook.framework.core.pojo.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -52,7 +52,7 @@ public class GlobalExceptionHandler {
     public Response handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
         log.warn(e.getMessage(), e);
         List<FieldError> list = e.getBindingResult().getFieldErrors();
-        if (CollectionUtils.isNotEmpty(list)) {
+        if (CollectionUtil.isNotEmpty(list)) {
             String message = list.stream().map(v -> v.getField() + ":" + v.getDefaultMessage()).collect(Collectors.joining("; "));
             return Response.fail(ErrorCodeEnum.PARAM_ERROR.getCode(), message);
         }

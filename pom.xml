@@ -3,17 +3,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.aircjm</groupId>
-    <artifactId>study-cloud</artifactId>
+    <artifactId>study-java</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>study-cloud</name>
+    <name>study-java</name>
     <packaging>pom</packaging>
-    <description>study-cloud 父工程,统一管理jar包版本</description>
+    <description>study-java 父工程,统一管理jar包版本</description>
 
     <modules>
         <module>java-base</module>
-<!--        <module>study-validate</module>-->
+        <module>study-validate</module>
         <module>study-postgis</module>
-        <module>study-cloud-web</module>
+        <module>study-java-web</module>
         <module>study-mybatis</module>
         <module>springboot3</module>
     </modules>
