@@ -5,3 +5,10 @@ spring:
   redis:
     host: 127.0.0.1
     port: 6379
+
+
+knife4j:
+  enable: true
+  openapi:
+    title: Knife4j官方文档
+    description: "`我是测试`,**你知道吗**"

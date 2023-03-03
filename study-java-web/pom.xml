@@ -26,9 +26,14 @@
 
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>com.rimlook.framework</groupId>
+            <artifactId>grus-starter-web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.rimlook.framework</groupId>
+            <artifactId>grus-starter-swagger</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
