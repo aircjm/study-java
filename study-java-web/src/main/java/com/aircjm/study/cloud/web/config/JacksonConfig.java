@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,7 +22,7 @@ import java.util.Date;
  * jackson全局配置
  */
 @Configuration
-public class LocalDateTimeConfig {
+public class JacksonConfig {
 
     /**
      * LocalDateTime的序列化 全局配置时间返回格式
@@ -32,6 +33,8 @@ public class LocalDateTimeConfig {
     public Jackson2ObjectMapperBuilderCustomizer jackson2ObjectMapperBuilderCustomizer() {
         return builder -> {
             builder.serializerByType(LocalDateTime.class, new LocalDateTimeSerializer());
+            builder.serializerByType(Long.class, ToStringSerializer.instance);
+            builder.serializerByType(Long.TYPE, ToStringSerializer.instance);
             builder.deserializerByType(LocalDateTime.class, new LocalDateTimeDeserializer());
         };
     }
