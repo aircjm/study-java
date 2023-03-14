@@ -1,11 +1,22 @@
-
-
+# DataSource Config
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: "jdbc:mysql://10.32.132.61:3306/usercenter"
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:test
     username: root
-    password: root
+    password: test
+  sql:
+    init:
+      schema-locations: classpath:db/schema-h2.sql
+      data-locations: classpath:db/data-h2.sql
+      mode: always
 
-mybatis:
+
+logging:
+  level:
+    com.aircjm.study.mybatis: debug
+
+mybatis-plus:
   mapper-locations: classpath:mapper/*Mapper.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl

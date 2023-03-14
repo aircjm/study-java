@@ -1,8 +1,8 @@
 package com.aircjm.study.mybatis;
 
 import cn.hutool.json.JSONUtil;
-import com.aircjm.study.mybatis.domain.UcUser;
-import com.aircjm.study.mybatis.mapper.UcUserMapper;
+import com.aircjm.study.mybatis.domain.SysUser;
+import com.aircjm.study.mybatis.mapper.SysUserMapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -28,10 +28,10 @@ public class SqlSessionTests {
 
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
-        UcUserMapper mapper = sqlSession.getMapper(UcUserMapper.class);
+        SysUserMapper mapper = sqlSession.getMapper(SysUserMapper.class);
 
-        UcUser ucUser = mapper.selectOne(0L);
-        System.out.println(JSONUtil.toJsonStr(ucUser));
+        SysUser ucSysUser = mapper.selectOne(0L);
+        System.out.println(JSONUtil.toJsonStr(ucSysUser));
 
         sqlSession.close();
     }
@@ -48,12 +48,12 @@ public class SqlSessionTests {
 
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
-        UcUserMapper mapper = sqlSession.getMapper(UcUserMapper.class);
+        SysUserMapper mapper = sqlSession.getMapper(SysUserMapper.class);
 
-        UcUser ucUser = new UcUser();
-        ucUser.setUsername("testcjm001");
-        ucUser.setId(1086L);
-        mapper.updateOne(ucUser);
+        SysUser ucSysUser = new SysUser();
+        ucSysUser.setName("testcjm001");
+        ucSysUser.setId(1086L);
+        mapper.updateOne(ucSysUser);
         sqlSession.close();
     }
 
