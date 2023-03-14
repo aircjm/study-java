@@ -14,6 +14,7 @@
         <module>study-validate</module>
         <module>study-postgis</module>
         <module>study-java-web</module>
+        <module>study-jpa-sqlite</module>
         <module>study-mybatis</module>
         <module>springboot3</module>
     </modules>
