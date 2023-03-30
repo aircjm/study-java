@@ -12,3 +12,15 @@ knife4j:
   openapi:
     title: Knife4j官方文档
     description: "`我是测试`,**你知道吗**"
+
+
+
+
+mail:
+  apiKey: apikeyDemo
+  uid: 3.1415
+  send-email-result-url: "urlTest"
+  subject: "demo"
+  cc: a@demo.com,b@test.com
+
+

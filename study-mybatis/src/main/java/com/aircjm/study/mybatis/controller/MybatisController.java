@@ -1,4 +1,4 @@
-package com.aircjm.study.mybatis;
+package com.aircjm.study.mybatis.controller;
 
 import cn.hutool.json.JSONUtil;
 import com.aircjm.study.mybatis.domain.SysUser;
