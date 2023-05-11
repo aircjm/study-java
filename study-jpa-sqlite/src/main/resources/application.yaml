@@ -1,0 +1,36 @@
+server:
+  port: 8085
+
+spring:
+  redis:
+    host: 127.0.0.1
+    port: 6379
+  #spring:#数据源和jpa配置
+  datasource:
+    #数据库相关的配置url  -SSL连接设置为false
+    url: jdbc:mysql://localhost:3306/jpa_dev?characterEncoding=utf8&useSSL=false
+    #配置用户名
+    username: root
+    #配置密码
+    password: 12345678
+  jpa:
+    #配置数据库类型
+    database: MYSQL
+    #配置是否打印sql
+    show-sql: true
+    #Hibernate相关配置
+    hibernate:
+      #配置级联等级
+      ddl-auto: update
+      naming:
+        #命名策略
+        strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
+knife4j:
+  enable: true
+  openapi:
+    title: Knife4j官方文档
+    description: "`我是测试`,**你知道吗**"

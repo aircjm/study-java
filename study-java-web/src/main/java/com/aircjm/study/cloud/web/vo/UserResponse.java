@@ -1,5 +1,7 @@
 package com.aircjm.study.cloud.web.vo;
 
+import cn.hutool.core.date.DatePattern;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -13,6 +15,7 @@ public class UserResponse {
     private Integer age;
 
 
+   @JsonFormat(pattern = DatePattern.NORM_DATETIME_PATTERN)
     private LocalDateTime createTime;
 
 

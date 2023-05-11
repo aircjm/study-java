@@ -6,10 +6,10 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @EnableScheduling
 @SpringBootApplication
-public class StudyCloudWebApplication {
+public class JavaWebApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(StudyCloudWebApplication.class, args);
+        SpringApplication.run(JavaWebApplication.class, args);
     }
 
 }
