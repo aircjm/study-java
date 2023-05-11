@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -53,17 +54,19 @@ public class ZipController {
         response.setContentType(mineType);
         response.setHeader("Content-disposition", "attachment; filename=" + filename);
 
-
         ServletOutputStream out = response.getOutputStream();
-        out.write(FileUtil.readBytes(zip));
+//        out.write(FileUtil.readBytes(zip));
+
+        FileInputStream input = new FileInputStream(zip);
+        byte[] buffer = new byte[1024];
+
+        int len;
+        while ((len = input.read(buffer)) > 0) {
+            out.write(buffer, 0, len);
+        }
+
         out.close();
 
-//        byte[] buffer = new byte[1024];
-//
-//        int len;
-//        while ((len = input.read(buffer)) > 0) {
-//            out.write(buffer, 0, len);
-//        }
     }
 
 }
