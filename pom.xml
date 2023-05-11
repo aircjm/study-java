@@ -17,6 +17,7 @@
         <module>study-jpa-sqlite</module>
         <module>study-mybatis</module>
         <module>springboot3</module>
+        <module>mybatis-plus-sqlite</module>
     </modules>
 
 

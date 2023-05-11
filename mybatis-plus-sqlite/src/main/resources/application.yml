@@ -1,0 +1,17 @@
+# DataSource Config
+spring:
+  datasource:
+    driver-class-name: org.sqlite.JDBC
+    url: jdbc:sqlite:test.db
+    username: root
+    password: test
+  sql:
+    init:
+      schema-locations: classpath:db/schema-h2.sql
+      data-locations: classpath:db/data-h2.sql
+      mode: always
+
+# Logger Config
+logging:
+  level:
+    com.baomidou.mybatisplus.samples.sqlite: debug

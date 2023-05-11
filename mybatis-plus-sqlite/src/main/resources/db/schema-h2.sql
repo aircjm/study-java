@@ -1,0 +1,10 @@
+DROP TABLE IF EXISTS sys_user;
+
+CREATE TABLE sys_user
+(
+	id int NOT NULL,
+	name VARCHAR(30) NULL DEFAULT NULL ,
+	age INT NULL DEFAULT NULL,
+	email varchar(50) NULL DEFAULT NULL,
+	PRIMARY KEY (id)
+);
