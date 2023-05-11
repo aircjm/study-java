@@ -14,4 +14,10 @@ spring:
 # Logger Config
 logging:
   level:
-    com.baomidou.mybatisplus.samples.sqlite: debug
+    com.rimlook.mybatisplus.sqlite: debug
+
+
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-field: is_delete

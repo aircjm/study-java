@@ -48,4 +48,12 @@ public class UserController {
         return list.toString();
     }
 
+
+    // 测试地址 http://localhost:8080/testLambda
+    @RequestMapping(value = "testLambda")
+    public String testLambda(){
+        userService.lambda();
+        return "success";
+    }
+
 }
