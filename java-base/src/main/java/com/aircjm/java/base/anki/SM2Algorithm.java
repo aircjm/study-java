@@ -1,5 +1,6 @@
 package com.aircjm.java.base.anki;
 import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.util.RandomUtil;
 
 import java.util.Date;
 
@@ -100,6 +101,18 @@ public class SM2Algorithm {
         level = SM2Algorithm.updateLevel(level, true);
         nextReviewDate = SM2Algorithm.getNextReviewDate(lastReviewDate, level);
         System.out.println("Next review date: " + DateUtil.formatDateTime(nextReviewDate));
+
+
+        for (int i = 0; i < 20; i++) {
+            int custom = RandomUtil.randomInt(0,5);
+            boolean randomBoolean = RandomUtil.randomBoolean();
+            lastReviewDate = nextReviewDate;
+            level = SM2Algorithm.updateLevel(custom, randomBoolean);
+            nextReviewDate = SM2Algorithm.getNextReviewDate(lastReviewDate, level);
+            System.out.println(custom+""+randomBoolean+"Next review date: " + DateUtil.formatDateTime(nextReviewDate));
+
+        }
+
 
     }
 
