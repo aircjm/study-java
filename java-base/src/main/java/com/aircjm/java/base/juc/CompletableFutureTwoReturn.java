@@ -2,6 +2,9 @@ package com.aircjm.java.base.juc;
 
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * 两个任务并发执行 使用不同的API来实现不同的返回值和处理结果
+ */
 public class CompletableFutureTwoReturn {
 
     public static void main(String[] args) {
