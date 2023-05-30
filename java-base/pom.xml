@@ -36,6 +36,10 @@
             <artifactId>hutool-all</artifactId>
             <version>5.8.1</version>
         </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

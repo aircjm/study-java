@@ -1,9 +1,12 @@
 package com.aircjm.study.cloud.web.factory;
 
+import com.google.common.collect.Lists;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Service;
+
+import java.util.concurrent.CompletableFuture;
 
 /**
  * 获取bean 并找出符合条件的bean(用于根据不同业务区分处理)
