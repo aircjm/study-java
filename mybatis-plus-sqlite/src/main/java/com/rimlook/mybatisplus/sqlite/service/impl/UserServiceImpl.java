@@ -50,11 +50,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
     @Override
     public void andOr() {
-
-
         LambdaQueryChainWrapper<User> qw = lambdaQuery();
-
         // todo
+        qw.and(item -> item.eq(User::getUserStatus, 0).or().eq(User::getUserStatus, 1));
+
+        List<User> list = qw.list();
+        log.info("list size is: {}", list);
 
     }
 

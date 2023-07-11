@@ -53,6 +53,7 @@ public class UserController {
     @RequestMapping(value = "testLambda")
     public String testLambda(){
         userService.lambda();
+        userService.andOr();
         return "success";
     }
 
