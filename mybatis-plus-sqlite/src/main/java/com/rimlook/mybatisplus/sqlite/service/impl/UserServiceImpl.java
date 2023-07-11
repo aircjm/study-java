@@ -1,5 +1,6 @@
 package com.rimlook.mybatisplus.sqlite.service.impl;
 
+import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.rimlook.mybatisplus.sqlite.entity.User;
@@ -46,4 +47,16 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         log.info("pageResult is: {}", pageResult);
         log.info("-------------------------------\n\n\n");
     }
+
+    @Override
+    public void andOr() {
+
+
+        LambdaQueryChainWrapper<User> qw = lambdaQuery();
+
+        // todo
+
+    }
+
+
 }

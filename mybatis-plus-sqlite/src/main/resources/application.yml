@@ -2,7 +2,7 @@
 spring:
   datasource:
     driver-class-name: org.sqlite.JDBC
-    url: jdbc:sqlite:test.db
+    url: jdbc:sqlite:./test.db
     username: root
     password: test
   sql:

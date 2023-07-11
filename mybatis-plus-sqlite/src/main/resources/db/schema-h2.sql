@@ -6,5 +6,7 @@ CREATE TABLE sys_user
 	name VARCHAR(30) NULL DEFAULT NULL ,
 	age INT NULL DEFAULT NULL,
 	email varchar(50) NULL DEFAULT NULL,
+    user_status int NOT NULL default  0,
+    is_delete int NOT NULL default  0,
 	PRIMARY KEY (id)
 );

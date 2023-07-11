@@ -35,3 +35,6 @@ build/
 **/*.rdb
 
 tmp
+
+
+test.db

@@ -9,4 +9,7 @@ import com.rimlook.mybatisplus.sqlite.entity.User;
 public interface IUserService extends IService<User> {
 
     void lambda();
+
+
+    void andOr();
 }
