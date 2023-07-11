@@ -50,14 +50,15 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
     @Override
     public void andOr() {
-        LambdaQueryChainWrapper<User> qw = lambdaQuery();
-        // todo
-        qw.and(item -> item.eq(User::getUserStatus, 0).or().eq(User::getUserStatus, 1));
+        LambdaQueryChainWrapper<User> qw = lambdaQuery().eq(User::getIsDelete, 0);
+        qw.and(item -> item.eq(User::getUserStatus, 0)
+                .or().eq(User::getUserStatus, 1)
+                .or().eq(User::getUserStatus, 2)
+        );
 
+//        SELECT id,name,age,email,user_status,is_delete FROM sys_user WHERE (is_delete = 0 AND (user_status = 0 OR user_status = 1 OR user_status = 2))
         List<User> list = qw.list();
         log.info("list size is: {}", list);
 
     }
-
-
 }
