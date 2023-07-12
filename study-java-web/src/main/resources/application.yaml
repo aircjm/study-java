@@ -14,6 +14,10 @@ knife4j:
     description: "`我是测试`,**你知道吗**"
 
 
+sdk:
+  apiKey: 4857fb44-557c-4e4b-96a1-65
+
+
 
 
 mail:
