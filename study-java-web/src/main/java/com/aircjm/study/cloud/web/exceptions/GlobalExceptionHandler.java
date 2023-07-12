@@ -1,4 +1,4 @@
-package com.aircjm.study.validate.exception;
+package com.aircjm.study.cloud.web.exceptions;
 
 import cn.hutool.core.collection.CollectionUtil;
 import com.rimlook.framework.core.enums.ErrorCodeEnum;

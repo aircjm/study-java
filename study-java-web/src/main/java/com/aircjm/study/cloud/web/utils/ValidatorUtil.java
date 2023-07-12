@@ -1,4 +1,4 @@
-package com.aircjm.study.validate.util;
+package com.aircjm.study.cloud.web.utils;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;

@@ -31,4 +31,11 @@ public class TestController {
         return "success";
     }
 
+
+    @GetMapping("/testAop")
+    public String testAop() {
+        testService.testAop();
+        return "success";
+    }
+
 }

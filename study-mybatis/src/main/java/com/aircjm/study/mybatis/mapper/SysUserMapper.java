@@ -1,9 +1,8 @@
 package com.aircjm.study.mybatis.mapper;
 
 import com.aircjm.study.mybatis.domain.SysUser;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
-public interface SysUserMapper extends BaseMapper<SysUser> {
+public interface SysUserMapper {
 
 
     SysUser selectOne(Long id);

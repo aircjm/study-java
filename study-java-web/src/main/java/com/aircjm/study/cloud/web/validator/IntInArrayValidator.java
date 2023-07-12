@@ -1,4 +1,4 @@
-package com.aircjm.study.validate.validator;
+package com.aircjm.study.cloud.web.validator;
 
 import com.google.common.primitives.Ints;
 import org.springframework.util.CollectionUtils;

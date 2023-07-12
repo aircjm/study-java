@@ -4,4 +4,8 @@ public interface TestService {
 
 
     void testCronSchedule();
+
+
+
+    void testAop();
 }

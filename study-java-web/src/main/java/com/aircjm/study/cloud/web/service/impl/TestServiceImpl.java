@@ -14,4 +14,10 @@ public class TestServiceImpl implements TestService {
     public void testCronSchedule() {
         log.info("测试单机定时任务");
     }
+
+    @Override
+    public void testAop() {
+        log.info("测试Aop");
+        this.testCronSchedule();
+    }
 }

@@ -38,3 +38,6 @@ tmp
 
 
 test.db
+
+*.db
+*.sqlite*

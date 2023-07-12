@@ -1,4 +1,4 @@
-package com.aircjm.study.validate.config;
+package com.aircjm.study.cloud.web.config;
 
 import org.hibernate.validator.HibernateValidator;
 import org.springframework.context.annotation.Bean;

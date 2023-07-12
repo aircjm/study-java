@@ -1,4 +1,4 @@
-package com.aircjm.study.validate.constants;
+package com.aircjm.study.cloud.web.constants;
 
 public class ValidateGroup {
 

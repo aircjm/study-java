@@ -1,6 +1,5 @@
 package com.aircjm.study.mybatis.domain;
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 @Data

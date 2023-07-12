@@ -1,4 +1,4 @@
-package com.aircjm.study.validate.vo;
+package com.aircjm.study.cloud.web.vo;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
