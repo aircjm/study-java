@@ -1,6 +1,6 @@
 package com.aircjm.study.cloud.web.vo;
 
-import com.aircjm.study.validate.constants.ValidateGroup;
+import com.aircjm.study.cloud.web.constants.ValidateGroup;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;

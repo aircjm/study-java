@@ -3,10 +3,10 @@ package com.aircjm.study.cloud.web.controller;
 
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.json.JSONUtil;
-import com.aircjm.study.validate.constants.ValidateGroup;
-import com.aircjm.study.validate.util.ValidatorUtil;
-import com.aircjm.study.validate.vo.SaveOrderRequest;
-import com.aircjm.study.validate.vo.SaveUserRequest;
+import com.aircjm.study.cloud.web.constants.ValidateGroup;
+import com.aircjm.study.cloud.web.utils.ValidatorUtil;
+import com.aircjm.study.cloud.web.vo.SaveOrderRequest;
+import com.aircjm.study.cloud.web.vo.SaveUserRequest;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
