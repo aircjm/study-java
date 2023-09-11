@@ -2,6 +2,7 @@ package com.aircjm.study.cloud.web.controller;
 
 import cn.hutool.core.lang.generator.SnowflakeGenerator;
 import cn.hutool.json.JSONUtil;
+import com.aircjm.study.cloud.web.vo.BigDecimalStringSerializerVo;
 import com.aircjm.study.cloud.web.vo.LongStringSerializerVo;
 import com.rimlook.framework.core.pojo.Response;
 import lombok.extern.slf4j.Slf4j;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 
 @RestController
 @RequestMapping("/json")
@@ -33,5 +35,19 @@ public class JsonController {
         // createBy 前端number类型展示在页面时是1631472076407701500 会丢失精度
         return Response.success(result);
     }
+
+
+    @GetMapping("/getBigDecimalType")
+    public Response<BigDecimalStringSerializerVo> getBigDecimalType(String num) {
+        BigDecimalStringSerializerVo result = new BigDecimalStringSerializerVo();
+        // 前端使用number类型会数据溢出 会导致前端接受数据时丢失精度，通过添加注解可以解决这个问题
+        result.setId(snowflakeGenerator.next());
+        result.setUsage(new BigDecimal(num));
+        log.info(JSONUtil.toJsonStr(result));
+        // {"id":1631472076407701504,"createBy":1631472076407701505}
+        // createBy 前端number类型展示在页面时是1631472076407701500 会丢失精度
+        return Response.success(result);
+    }
+
 
 }
