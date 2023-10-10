@@ -42,10 +42,13 @@ public class UserController {
     @RequestMapping(value = "testEmpty")
     public String testEmpty(){
 
-        LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.eq(User::getAge, 99999);
-        List<User> list = userService.list(queryWrapper);
-        return list.toString();
+        for (int i = 0; i < 5; i++) {
+            LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<>();
+            queryWrapper.eq(User::getAge, 99999);
+            List<User> list = userService.list(queryWrapper);
+        }
+
+        return "success";
     }
 
 
@@ -54,6 +57,14 @@ public class UserController {
     public String testLambda(){
         userService.lambda();
         userService.andOr();
+        return "success";
+    }
+
+
+    // 测试地址 http://localhost:8080/test3Search
+    @RequestMapping(value = "test3Search")
+    public String test3Search(){
+        userService.test3Search();
         return "success";
     }
 

@@ -15,6 +15,7 @@
         <module>study-java-web</module>
         <module>study-jpa-sqlite</module>
         <module>study-mybatis</module>
+        <module>study-mybatisplus</module>
         <module>springboot3</module>
         <module>mybatis-plus-sqlite</module>
     </modules>

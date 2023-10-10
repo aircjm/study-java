@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RequestMapping("/value")
 @RestController
-public class ValueController {
+public class  ValueController {
 
 
     @Value("${sdk.apiKey:}")

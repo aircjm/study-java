@@ -17,9 +17,17 @@ spring:
 
 logging:
   level:
-    com.aircjm.study.mybatis: debug
+    com.aircjm.study.mybatisplus: debug
 
 mybatis-plus:
-  mapper-locations: classpath:mapper/*Mapper.xml
+  mapper-locations: classpath*:/mapper/*.xml
   configuration:
     log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    default-enum-type-handler: com.baomidou.mybatisplus.core.handlers.MybatisEnumTypeHandler
+    local-cache-scope: session
+  global-config:
+    db-config:
+      logic-delete-value: 1
+      logic-not-delete-value: 0
