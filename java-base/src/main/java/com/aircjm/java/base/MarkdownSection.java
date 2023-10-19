@@ -1,5 +1,7 @@
 package com.aircjm.java.base;
 
+import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.json.JSONUtil;
 import lombok.Data;
 
 import java.util.ArrayList;
@@ -28,6 +30,7 @@ public class MarkdownSection {
     public void addChild(MarkdownSection section) {
         children.add(section);
     }
+
 
 
     public void printSection(int level) {
@@ -116,5 +119,25 @@ public class MarkdownSection {
         // 打印树结构
         root.printSection(0);
 
+
+        List<MarkdownSection> h4Sections = findH4Sections(root);
+        System.out.println(JSONUtil.toJsonStr(h4Sections));
+    }
+
+    public static List<MarkdownSection> findH4Sections(MarkdownSection section) {
+        List<MarkdownSection> h4Sections = new ArrayList<>();
+        findH4SectionsRecursively(section, h4Sections);
+        return h4Sections;
+    }
+
+    private static void findH4SectionsRecursively(MarkdownSection section, List<MarkdownSection> h4Sections) {
+        if (countHeadingLevel(section.getTitle()) == 4) {
+            MarkdownSection result = BeanUtil.copyProperties(section, MarkdownSection.class);
+            result.setChildren(null);
+            h4Sections.add(result);
+        }
+        for (MarkdownSection child : section.getChildren()) {
+            findH4SectionsRecursively(child, h4Sections);
+        }
     }
 }
