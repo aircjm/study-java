@@ -11,8 +11,7 @@ import java.util.regex.Pattern;
 public class MarkdownSplitter {
     public static void main(String[] args) {
         // 定义要读取的Markdown文件路径
-        String filePath = "/Users/chenjiaming/Developer/code/github/Obsidian/lucida/0-INBOX/00软考-系统分析师/系统分析师-需求工程.md";
-
+        String filePath = "a.md";
         // 读取Markdown文件内容
         String markdownContent = readMarkdownFile(filePath);
 

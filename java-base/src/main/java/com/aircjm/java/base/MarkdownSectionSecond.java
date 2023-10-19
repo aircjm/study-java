@@ -1,21 +1,23 @@
 package com.aircjm.java.base;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MarkdownSection {
-    private String title;
-    private List<MarkdownSection> children;
+import static com.aircjm.java.base.MarkdownSectionOne.readMarkdownFile;
+import static com.aircjm.java.base.MarkdownSectionOne.splitMarkdownByHeadings;
 
-    public MarkdownSection(String title) {
+public class MarkdownSectionSecond {
+    private String title;
+    private String content;
+    private List<MarkdownSectionSecond> children;
+
+    public MarkdownSectionSecond(String title, String content) {
         this.title = title;
+        this.content = content;
         this.children = new ArrayList<>();
     }
 
-    public void addChild(MarkdownSection section) {
+    public void addChild(MarkdownSectionSecond section) {
         children.add(section);
     }
 
@@ -23,7 +25,11 @@ public class MarkdownSection {
         return title;
     }
 
-    public List<MarkdownSection> getChildren() {
+    public String getContent() {
+        return content;
+    }
+
+    public List<MarkdownSectionSecond> getChildren() {
         return children;
     }
 
@@ -32,21 +38,24 @@ public class MarkdownSection {
         for (int i = 0; i < level; i++) {
             indent.append("  ");
         }
-        System.out.println(indent.toString() + title);
+        System.out.println(indent.toString() + "Title: " + title);
+        System.out.println(indent.toString() + "Content: " + content);
 
-        for (MarkdownSection child : children) {
+        for (MarkdownSectionSecond child : children) {
             child.printSection(level + 1);
         }
     }
 
-    public static MarkdownSection buildSectionTree(List<String> sections, int level) {
-        MarkdownSection root = null;
-        MarkdownSection currentSection = null;
+    public static MarkdownSectionSecond buildSectionTree(List<String> sections, int level) {
+        MarkdownSectionSecond root = null;
+        MarkdownSectionSecond currentSection = null;
 
         for (String section : sections) {
             int sectionLevel = countHeadingLevel(section);
             if (sectionLevel == level) {
-                MarkdownSection newSection = new MarkdownSection(section);
+                // 拆分标题和内容
+                String[] parts = splitSection(section);
+                MarkdownSectionSecond newSection = new MarkdownSectionSecond(parts[0], parts[1]);
                 if (root == null) {
                     root = newSection;
                 } else {
@@ -75,10 +84,23 @@ public class MarkdownSection {
         return level;
     }
 
-    public static void main(String[] args) {
-        // 定义要读取的Markdown文件路径
-        String filePath = "/Users/chenjiaming/Developer/code/github/Obsidian/lucida/0-INBOX/00软考-系统分析师/系统分析师-需求工程.md";
+    private static String[] splitSection(String section) {
+        // 使用第一个换行符将标题和内容拆分
+        int index = section.indexOf("\n");
+        if (index >= 0) {
+            String title = section.substring(0, index).trim();
+            String content = section.substring(index + 1).trim();
+            return new String[]{title, content};
+        }else {
+            return new String[]{section, ""};
+        }
 
+    }
+
+    public static void main(String[] args) {
+
+        // 定义要读取的Markdown文件路径
+        String filePath = "a.md";
 
         // 读取Markdown文件内容
         String markdownContent = readMarkdownFile(filePath);
@@ -87,37 +109,9 @@ public class MarkdownSection {
         List<String> sections = splitMarkdownByHeadings(markdownContent);
 
         // 构建树结构
-        MarkdownSection root = buildSectionTree(sections, 1);
+        MarkdownSectionSecond root = buildSectionTree(sections, 1);
 
         // 打印树结构
         root.printSection(0);
-    }
-
-    private static String readMarkdownFile(String filePath) {
-        try {
-            return new String(Files.readAllBytes(Paths.get(filePath)));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return "";
-    }
-
-    private static List<String> splitMarkdownByHeadings(String markdownContent) {
-        List<String> sections = new ArrayList<>();
-
-        // 使用正则表达式匹配标题行
-        String[] lines = markdownContent.split("\n");
-        for (String line : lines) {
-            if (line.matches("^#+\\s+.+")) {
-                sections.add(line.trim());
-            } else if (!sections.isEmpty()) {
-                int lastIndex = sections.size() - 1;
-                String lastSection = sections.get(lastIndex);
-                lastSection += "\n" + line;
-                sections.set(lastIndex, lastSection);
-            }
-        }
-
-        return sections;
     }
 }
