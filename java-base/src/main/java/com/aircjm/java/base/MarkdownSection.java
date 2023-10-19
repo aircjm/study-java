@@ -1,72 +1,74 @@
 package com.aircjm.java.base;
 
+import lombok.Data;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.aircjm.java.base.MarkdownSectionOne.readMarkdownFile;
 import static com.aircjm.java.base.MarkdownSectionOne.splitMarkdownByHeadings;
 
-public class MarkdownSectionSecond {
-    private String title;
-    private String content;
-    private List<MarkdownSectionSecond> children;
+@Data
+public class MarkdownSection {
 
-    public MarkdownSectionSecond(String title, String content) {
+    private String path;
+
+    private String title;
+
+    private String content;
+    private List<MarkdownSection> children;
+
+    public MarkdownSection(String title, String content) {
         this.title = title;
         this.content = content;
         this.children = new ArrayList<>();
+        this.path = "";
     }
 
-    public void addChild(MarkdownSectionSecond section) {
+    public void addChild(MarkdownSection section) {
         children.add(section);
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public List<MarkdownSectionSecond> getChildren() {
-        return children;
-    }
 
     public void printSection(int level) {
         StringBuilder indent = new StringBuilder();
         for (int i = 0; i < level; i++) {
             indent.append("  ");
         }
+        System.out.println(indent.toString() + "Path: " + path);
         System.out.println(indent.toString() + "Title: " + title);
         System.out.println(indent.toString() + "Content: " + content);
 
-        for (MarkdownSectionSecond child : children) {
+        for (MarkdownSection child : children) {
             child.printSection(level + 1);
         }
     }
 
-    public static MarkdownSectionSecond buildSectionTree(List<String> sections, int level) {
-        MarkdownSectionSecond root = null;
-        MarkdownSectionSecond currentSection = null;
+    public static MarkdownSection buildSectionTree(List<String> sections, int level) {
+        MarkdownSection root = null;
+        MarkdownSection currentSection = null;
 
         for (String section : sections) {
             int sectionLevel = countHeadingLevel(section);
             if (sectionLevel == level) {
                 // 拆分标题和内容
                 String[] parts = splitSection(section);
-                MarkdownSectionSecond newSection = new MarkdownSectionSecond(parts[0], parts[1]);
+                MarkdownSection newSection = new MarkdownSection(parts[0], parts[1]);
                 if (root == null) {
                     root = newSection;
+                    root.setPath(newSection.getTitle());
                 } else {
                     currentSection.addChild(newSection);
+                    newSection.setPath(currentSection.getPath() + "/" + newSection.getTitle());
                 }
                 currentSection = newSection;
             } else if (sectionLevel > level) {
                 if (currentSection != null) {
                     List<String> childSections = new ArrayList<>();
                     childSections.add(section);
-                    currentSection.addChild(buildSectionTree(childSections, sectionLevel));
+                    MarkdownSection childSection = buildSectionTree(childSections, sectionLevel);
+                    currentSection.addChild(childSection);
+                    childSection.setPath(currentSection.getPath() + "/" + childSection.getTitle());
                 }
             } else {
                 currentSection = null;
@@ -100,7 +102,7 @@ public class MarkdownSectionSecond {
     public static void main(String[] args) {
 
         // 定义要读取的Markdown文件路径
-        String filePath = "a.md";
+        String filePath = "/Users/chenjiaming/Developer/code/github/Obsidian/lucida/0-INBOX/00软考-系统分析师/系统分析师-需求工程.md";
 
         // 读取Markdown文件内容
         String markdownContent = readMarkdownFile(filePath);
@@ -109,9 +111,10 @@ public class MarkdownSectionSecond {
         List<String> sections = splitMarkdownByHeadings(markdownContent);
 
         // 构建树结构
-        MarkdownSectionSecond root = buildSectionTree(sections, 1);
+        MarkdownSection root = buildSectionTree(sections, 1);
 
         // 打印树结构
         root.printSection(0);
+
     }
 }
