@@ -1,4 +1,4 @@
-package com.aircjm.java.base;
+package com.aircjm.java.base.anki;
 
 import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONUtil;
@@ -18,7 +18,7 @@ import java.util.Map;
  */
 @Service
 @Slf4j
-public class AnkiServiceImpl {
+public class AnkiService {
 
     public AnkiRespVo postAnki(AnkiVo ankiVo) {
 //        HttpHeaders headers = new HttpHeaders();

@@ -1,51 +1,15 @@
-package com.aircjm.java.base;
+package com.aircjm.java.base.markdown;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.json.JSONUtil;
-import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.aircjm.java.base.MarkdownSectionOne.readMarkdownFile;
-import static com.aircjm.java.base.MarkdownSectionOne.splitMarkdownByHeadings;
+import static com.aircjm.java.base.markdown.MarkdownSectionOne.readMarkdownFile;
+import static com.aircjm.java.base.markdown.MarkdownSectionOne.splitMarkdownByHeadings;
 
-@Data
-public class MarkdownSection {
-
-    private String path;
-
-    private String title;
-
-    private String content;
-    private List<MarkdownSection> children;
-
-    public MarkdownSection(String title, String content) {
-        this.title = title;
-        this.content = content;
-        this.children = new ArrayList<>();
-        this.path = "";
-    }
-
-    public void addChild(MarkdownSection section) {
-        children.add(section);
-    }
-
-
-
-    public void printSection(int level) {
-        StringBuilder indent = new StringBuilder();
-        for (int i = 0; i < level; i++) {
-            indent.append("  ");
-        }
-        System.out.println(indent.toString() + "Path: " + path);
-        System.out.println(indent.toString() + "Title: " + title);
-        System.out.println(indent.toString() + "Content: " + content);
-
-        for (MarkdownSection child : children) {
-            child.printSection(level + 1);
-        }
-    }
+public class TestMarkdownSection {
 
     public static MarkdownSection buildSectionTree(List<String> sections, int level) {
         MarkdownSection root = null;
@@ -81,7 +45,7 @@ public class MarkdownSection {
         return root;
     }
 
-    private static int countHeadingLevel(String section) {
+    public static int countHeadingLevel(String section) {
         int level = 0;
         while (level < section.length() && section.charAt(level) == '#') {
             level++;
@@ -89,7 +53,7 @@ public class MarkdownSection {
         return level;
     }
 
-    private static String[] splitSection(String section) {
+    public static String[] splitSection(String section) {
         // 使用第一个换行符将标题和内容拆分
         int index = section.indexOf("\n");
         if (index >= 0) {
@@ -105,7 +69,7 @@ public class MarkdownSection {
     public static void main(String[] args) {
 
         // 定义要读取的Markdown文件路径
-        String filePath = "/Users/chenjiaming/Developer/code/github/Obsidian/lucida/0-INBOX/00软考-系统分析师/系统分析师-需求工程.md";
+        String filePath = "testMd.md";
 
         // 读取Markdown文件内容
         String markdownContent = readMarkdownFile(filePath);
@@ -120,24 +84,33 @@ public class MarkdownSection {
         root.printSection(0);
 
 
-        List<MarkdownSection> h4Sections = findH4Sections(root);
-        System.out.println(JSONUtil.toJsonStr(h4Sections));
+        List<MarkdownSection> h4Sections = findH4Sections(root, 3);
+
+        h4Sections.forEach(item -> {
+            System.out.println("------------ Begin");
+            System.out.println("Path: " + item.getPath());
+            System.out.println("Title: " + item.getTitle());
+            System.out.println("Content: " + item.getContent());
+            System.out.println("------------ End");
+
+        });
     }
 
-    public static List<MarkdownSection> findH4Sections(MarkdownSection section) {
+    public static List<MarkdownSection> findH4Sections(MarkdownSection section,Integer level) {
         List<MarkdownSection> h4Sections = new ArrayList<>();
-        findH4SectionsRecursively(section, h4Sections);
+        findH4SectionsRecursively(section, h4Sections, level);
         return h4Sections;
     }
 
-    private static void findH4SectionsRecursively(MarkdownSection section, List<MarkdownSection> h4Sections) {
-        if (countHeadingLevel(section.getTitle()) == 4) {
+    public static void findH4SectionsRecursively(MarkdownSection section, List<MarkdownSection> h4Sections,
+                                                  Integer level) {
+        if (countHeadingLevel(section.getTitle()) == level) {
             MarkdownSection result = BeanUtil.copyProperties(section, MarkdownSection.class);
             result.setChildren(null);
             h4Sections.add(result);
         }
         for (MarkdownSection child : section.getChildren()) {
-            findH4SectionsRecursively(child, h4Sections);
+            findH4SectionsRecursively(child, h4Sections, level);
         }
     }
 }
