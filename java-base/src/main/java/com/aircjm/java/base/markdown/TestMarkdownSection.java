@@ -1,13 +1,12 @@
 package com.aircjm.java.base.markdown;
 
 import cn.hutool.core.bean.BeanUtil;
-import cn.hutool.json.JSONUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.aircjm.java.base.markdown.MarkdownSectionOne.readMarkdownFile;
-import static com.aircjm.java.base.markdown.MarkdownSectionOne.splitMarkdownByHeadings;
+import static com.aircjm.java.base.markdown.MarkdownUtil.readMarkdownFile;
+import static com.aircjm.java.base.markdown.MarkdownUtil.splitMarkdownByHeadings;
 
 public class TestMarkdownSection {
 

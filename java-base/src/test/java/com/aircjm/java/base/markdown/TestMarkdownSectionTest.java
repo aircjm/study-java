@@ -5,10 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static com.aircjm.java.base.markdown.MarkdownSectionOne.readMarkdownFile;
-import static com.aircjm.java.base.markdown.MarkdownSectionOne.splitMarkdownByHeadings;
-import static org.junit.jupiter.api.Assertions.*;
-
 public class TestMarkdownSectionTest {
 
 

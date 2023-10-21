@@ -1,14 +1,9 @@
 package com.aircjm.java.base.markdown;
 
-import cn.hutool.core.bean.BeanUtil;
-import cn.hutool.json.JSONUtil;
 import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.aircjm.java.base.markdown.MarkdownSectionOne.readMarkdownFile;
-import static com.aircjm.java.base.markdown.MarkdownSectionOne.splitMarkdownByHeadings;
 
 @Data
 public class MarkdownSection {
@@ -23,6 +18,12 @@ public class MarkdownSection {
     public MarkdownSection(String title, String content) {
         this.title = title;
         this.content = content;
+        this.children = new ArrayList<>();
+        this.path = "";
+    }
+
+    public MarkdownSection(String title) {
+        this.title = title;
         this.children = new ArrayList<>();
         this.path = "";
     }
