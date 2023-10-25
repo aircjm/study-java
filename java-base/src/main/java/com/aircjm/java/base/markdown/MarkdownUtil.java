@@ -18,18 +18,24 @@ public class MarkdownUtil {
         for (String section : sections) {
             int sectionLevel = countHeadingLevel(section);
             if (sectionLevel == level) {
-                MarkdownSection newSection = new MarkdownSection(section);
+                // 拆分标题和内容
+                String[] parts = splitSection(section);
+                MarkdownSection newSection = new MarkdownSection(parts[0], parts[1]);
                 if (root == null) {
                     root = newSection;
+                    root.setPath(newSection.getTitle());
                 } else {
                     currentSection.addChild(newSection);
+                    newSection.setPath(currentSection.getPath() + "/" + newSection.getTitle());
                 }
                 currentSection = newSection;
             } else if (sectionLevel > level) {
                 if (currentSection != null) {
                     List<String> childSections = new ArrayList<>();
                     childSections.add(section);
-                    currentSection.addChild(buildSectionTree(childSections, sectionLevel));
+                    MarkdownSection childSection = buildSectionTree(childSections, sectionLevel);
+                    currentSection.addChild(childSection);
+                    childSection.setPath(currentSection.getPath() + "/" + childSection.getTitle());
                 }
             } else {
                 currentSection = null;
@@ -38,6 +44,21 @@ public class MarkdownUtil {
 
         return root;
     }
+
+
+    public static String[] splitSection(String section) {
+        // 使用第一个换行符将标题和内容拆分
+        int index = section.indexOf("\n");
+        if (index >= 0) {
+            String title = section.substring(0, index).trim();
+            String content = section.substring(index + 1).trim();
+            return new String[]{title, content};
+        }else {
+            return new String[]{section, ""};
+        }
+
+    }
+
 
     private static int countHeadingLevel(String section) {
         int level = 0;

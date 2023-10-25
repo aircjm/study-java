@@ -5,6 +5,7 @@ import cn.hutool.json.JSONUtil;
 import com.aircjm.java.base.anki.anki.vo.Note;
 import com.aircjm.java.base.anki.ankiconnect.AnkiVo;
 import com.aircjm.java.base.anki.response.AnkiRespVo;
+import com.aircjm.java.base.markdown.MarkdownSection;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
@@ -47,9 +48,29 @@ public class AnkiService {
         String version = HttpUtil.post("http://localhost:8765", "{\"action\": \"deckNames\", \"version\": 5}");
         System.out.println(version);
         System.out.println(JSONUtil.toJsonStr(ankiVo));
-        String post = HttpUtil.post("http://localhost:8765",JSONUtil.toJsonStr(ankiVo));
+        String post = HttpUtil.post("http://localhost:8765", JSONUtil.toJsonStr(ankiVo));
 //        String post = HttpUtil.post("http://localhost:8765","{\"action\":\"addNote\",\"version\":5,\"params\":{\"note\":{\"deckName\":\"Default\",\"modelName\":\"Basic\",\"fields\":{\"Front\":\"front content\",\"Back\":\"back content\"},\"tags\":[\"yomichan\"],\"audio\":{\"url\":\"https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=猫&kana=ねこ\",\"filename\":\"yomichan_ねこ_猫.mp3\",\"skipHash\":\"7e2c2f954ef6051373ba916f000168dc\",\"fields\":\"Front\"}}}}");
         System.out.println(post);
+    }
+
+    public static String md2Anki(MarkdownSection markdownSection) {
+
+        Note note = Note.convert(markdownSection.getTitle(), markdownSection.getContent(), Lists.newArrayList());
+        note.setDeckName("2023ruankao");
+        note.setModelName("Markdown");
+        AnkiVo ankiVo = new AnkiVo();
+        ankiVo.setAction("addNote");
+        Map<String, Object> params = Maps.newHashMap();
+        params.put("note", note);
+        ankiVo.setParams(params);
+        String version = HttpUtil.post("http://localhost:8765", "{\"action\": \"deckNames\", \"version\": 5}");
+        System.out.println(version);
+        System.out.println(JSONUtil.toJsonStr(ankiVo));
+        String post = HttpUtil.post("http://localhost:8765", JSONUtil.toJsonStr(ankiVo));
+//        String post = HttpUtil.post("http://localhost:8765","{\"action\":\"addNote\",\"version\":5,\"params\":{\"note\":{\"deckName\":\"Default\",\"modelName\":\"Basic\",\"fields\":{\"Front\":\"front content\",\"Back\":\"back content\"},\"tags\":[\"yomichan\"],\"audio\":{\"url\":\"https://assets.languagepod101.com/dictionary/japanese/audiomp3.php?kanji=猫&kana=ねこ\",\"filename\":\"yomichan_ねこ_猫.mp3\",\"skipHash\":\"7e2c2f954ef6051373ba916f000168dc\",\"fields\":\"Front\"}}}}");
+        String result = JSONUtil.toBean(post, AnkiRespVo.class).getResult();
+        System.out.println(result);
+        return result;
     }
 
 
