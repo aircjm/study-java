@@ -5,6 +5,7 @@ import cn.hutool.core.util.StrUtil;
 import com.aircjm.java.base.anki.AnkiService;
 import com.aircjm.java.base.markdown.MarkdownSection;
 import com.aircjm.java.base.markdown.MarkdownUtil;
+import com.aircjm.java.base.match.PatternMatchUtil;
 
 import java.io.File;
 import java.util.List;
@@ -38,6 +39,7 @@ public class ReadDir {
                 System.out.println("Content: " + item.getContent());
                 System.out.println("------------ End");
                 if (StrUtil.isNotBlank(item.getTitle()) && StrUtil.isNotBlank(item.getContent())) {
+                    item.setContent(PatternMatchUtil.replaceDoubleLinkToMd(item.getContent()));
                     AnkiService.md2Anki(item);
                 }
             });
