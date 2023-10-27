@@ -46,4 +46,20 @@ public class PatternMatchUtil {
         return result;
     }
 
+
+
+    public static String replaceDoubleLinkToAnkiMd(String md) {
+        String regex = "!\\[\\[(.*?)\\]\\]"; // 匹配双链笔记中的图片链接
+        // 创建Pattern对象，并编译正则表达式
+        Pattern pattern = Pattern.compile(regex);
+
+        // 创建Matcher对象，并应用正则表达式到输入字符串上
+        Matcher matcher = pattern.matcher(md);
+
+        // 使用正则表达式进行匹配和替换
+        String result = matcher.replaceAll("<img src=\"$1\">");
+
+        return result;
+    }
+
 }

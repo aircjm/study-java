@@ -39,7 +39,7 @@ public class ReadDir {
                 System.out.println("Content: " + item.getContent());
                 System.out.println("------------ End");
                 if (StrUtil.isNotBlank(item.getTitle()) && StrUtil.isNotBlank(item.getContent())) {
-                    item.setContent(PatternMatchUtil.replaceDoubleLinkToMd(item.getContent()));
+                    item.setContent(PatternMatchUtil.replaceDoubleLinkToAnkiMd(item.getContent()));
                     AnkiService.md2Anki(item);
                 }
             });
