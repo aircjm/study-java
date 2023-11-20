@@ -9,6 +9,7 @@ import com.rimlook.mybatisplus.sqlite.service.IUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -76,5 +77,21 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
             List<User> list = qw.list();
             log.info("list size is: {}", list.size());
         }
+    }
+
+    @Override
+    public void batchSave() {
+        long begin = System.currentTimeMillis();
+        List<User> users = new ArrayList<>();
+        for (int i = 0; i < 1000; i++) {
+            User user = new User();
+            user.setId(Long.valueOf(1000 + i));
+            user.setName("name" + i);
+            user.setAge(18);
+            user.setEmail(i+"email@gmail.com");
+            users.add(user);
+        }
+        saveBatch(users);
+        log.info("end use :{}", System.currentTimeMillis() - begin);
     }
 }

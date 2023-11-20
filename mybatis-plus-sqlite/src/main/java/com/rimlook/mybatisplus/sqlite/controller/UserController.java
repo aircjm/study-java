@@ -68,4 +68,13 @@ public class UserController {
         return "success";
     }
 
+
+
+
+    // 测试地址 http://localhost:8080/batchSave
+    @RequestMapping(value = "batchSave")
+    public String batchSave(){
+        userService.batchSave();
+        return "success";
+    }
 }
