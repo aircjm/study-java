@@ -11,6 +11,7 @@
 
     <modules>
         <module>java-base</module>
+        <module>java-jedis</module>
         <module>study-postgis</module>
         <module>study-java-web</module>
         <module>study-jpa-sqlite</module>
