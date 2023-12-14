@@ -15,6 +15,7 @@ public class JavaJedisApplication {
 // 尝试操作Redis
         jedis.set("msg", "Hello World!");
         String msg = jedis.get("msg");
+        Boolean ello = jedis.exists("ello");
         System.out.println(msg);	// 打印"Hello World!"
 // 关闭Redis连接
         jedis.close();
