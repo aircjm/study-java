@@ -94,4 +94,21 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         saveBatch(users);
         log.info("end use :{}", System.currentTimeMillis() - begin);
     }
+
+    @Override
+    public void testUpdateStrategy() {
+        User user = new User();
+        user.setName("testUpdateStrategy");
+        user.setAge(18);
+        user.setEmail("email@gmail.com");
+        save(user);
+        User entity = getById(user.getId());
+
+        if (entity != null) {
+            entity.setEmail(null);
+            updateById(entity);
+
+            baseMapper.deleteById(user.getId());
+        }
+    }
 }

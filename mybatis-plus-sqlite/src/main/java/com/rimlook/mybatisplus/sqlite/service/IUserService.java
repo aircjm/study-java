@@ -16,4 +16,6 @@ public interface IUserService extends IService<User> {
     void test3Search();
 
     void batchSave();
+
+    void testUpdateStrategy();
 }
