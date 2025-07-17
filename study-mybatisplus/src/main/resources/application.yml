@@ -8,10 +8,15 @@ spring:
     hikari:
       max-lifetime: 150000
       connection-test-query: select 1
+    # Database initialization configuration
   sql:
+    # Initialize the database schema and data
     init:
+      # Location of the database schema file
       schema-locations: classpath:db/schema-h2.sql
+      # Location of the database data file
       data-locations: classpath:db/data-h2.sql
+      # Mode for database initialization (always, never, embedded)
       mode: always
 
 
