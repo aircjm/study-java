@@ -41,3 +41,4 @@ test.db
 
 *.db
 *.sqlite*
+/study-elasticsearch/
